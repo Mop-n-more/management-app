@@ -1,15 +1,12 @@
-import React, {Component} from 'react';
-import ReactDOM from 'react-dom';
-import './styles/styles.css';
+console.log("hello webpack");
+import "./styles/styles.css";
+import React, { useState } from "react";
+import { render } from "react-dom";
 
-class App extends Component {
-  render() {
-    return(
-      <div>Hello World</div>
-    )
-  }
-} 
+function App() {
+    const [state, setState] = useState("CLICK ME");
 
-ReactDOM.render(
-  <App />, document.getElementById('app')
-);
+    return <button onClick={() => setState("CLICKED")}>{state}</button>;
+}
+
+render(<App />, document.getElementById("app"));
