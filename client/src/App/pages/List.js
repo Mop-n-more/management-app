@@ -7,13 +7,8 @@ import axios from 'axios';
 
 function List() {
   const [list, setList] = useState({listArr: []});
-  
-  // fetch list
-  // useEffect(async () => {
-  //   fetch('http://localhost:8000/api/getList')
-  //   .then((res) => res.json())
-  //   .then(list => setList({list}));
-  // })
+
+  // this is to get the list from the server. 
   useEffect(async () => {
     const result = await axios(
       'http://localhost:8000/api/getList'
@@ -21,10 +16,13 @@ function List() {
     setList(result.data);
   })
 
+
+
   return(
     <div className="App">
       <Title>List of Items</Title>
       {/** Check to see if any items are found */}
+      {/** TODO: i think the problem is here */}
       {list.listArr.length ? (
         <CenterContainer>
           {/** Render the list of items */}
