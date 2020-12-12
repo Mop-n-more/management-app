@@ -1,4 +1,5 @@
 const express = require('express');
+require('dotenv').config();
 
 const app = express();
 
@@ -10,6 +11,7 @@ app.get('/testAPI', (req, res) => {
   res.send("api working correctly, status code: " + res.statusCode);
 })
 
-app.listen('8000', () => {
-  console.log("listening on port 8000");
+app.listen(process.env.PORT, () => {
+  console.log(`listening on port ${process.env.PORT}`);
 })
+
