@@ -11,7 +11,10 @@ node_modules/
 .eslintcache
 
 # dotenv environment variables file
-.env
+.env*
 
 # webpack builds
 dist
+
+# vscode debuging
+.vscode*

@@ -1,1 +1,0 @@
-//TODO: will be used for main import for styled component but dont know how yet.
