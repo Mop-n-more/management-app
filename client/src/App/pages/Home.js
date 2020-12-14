@@ -6,17 +6,18 @@ import { CenterContainer } from '../styles/centeredContainer';
 
 function Home() {
   return (
+    <CenterContainer>
     <div className="App">
       <Title>Project Home</Title>
         {/** Link to List.js */} 
-          <CenterContainer>
             <Link to={'./list'}>
               <Button variant="raised">
                 My List
               </Button>
             </Link>
-          </CenterContainer>
     </div>
+
+    </CenterContainer>
   );
 }
 

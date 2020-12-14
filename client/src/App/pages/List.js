@@ -3,42 +3,33 @@
 import React, { useState, useEffect }from 'react';
 import { CenterContainer } from "../styles/centeredContainer";
 import { Title } from '../styles/title';
+import { useFetch } from '../utils/hooks';
+import { NextLine } from '../styles/nextLine';
 import axios from 'axios';
 
 function List() {
-  const [list, setList] = useState({listArr: []});
 
-  // this is to get the list from the server. 
-  useEffect(async () => {
-    const result = await axios(
-      'http://localhost:8000/api/getList'
-    );
-    setList(result.data);
-  })
+  const [data, loading] = useFetch(
+    "http://localhost:8000/api/getList"
+  );
 
-
+  // console.log("from List.js - data: " +data)
 
   return(
-    <div className="App">
-      <Title>List of Items</Title>
-      {/** Check to see if any items are found */}
-      {/** TODO: i think the problem is here */}
-      {list.listArr.length ? (
-        <CenterContainer>
-          {/** Render the list of items */}
-          {list.listArr.map((item) => {
-              <div>
-                {item}
-              </div>
-          })}
-        </CenterContainer>
-      ) : (
-        <CenterContainer>
-          <h2>No List Items Found</h2>
-        </CenterContainer>
-      )
-    }
-    </div>
+    <CenterContainer>
+      <div>
+      <Title>List from server{"\n"}</Title>
+        {data.map((item) => {
+          return (
+            <NextLine>
+              {item}
+            </NextLine>
+          )
+            {/* {console.log("from list.js - data: " + data)} */}
+        })}
+
+      </div>
+    </CenterContainer>
   );
 }
 
