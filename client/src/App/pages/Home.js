@@ -7,11 +7,11 @@ import { CenterContainer } from '../styles/centeredContainer';
 function Home() {
   return (
     <CenterContainer>
-    <div className="App">
+    <div className='App'>
       <Title>Project Home</Title>
         {/** Link to List.js */} 
             <Link to={'./list'}>
-              <Button variant="raised">
+              <Button variant='raised'>
                 My List
               </Button>
             </Link>

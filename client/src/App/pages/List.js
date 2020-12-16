@@ -1,7 +1,7 @@
 // List.js will only be used for testing purposes
 // for connecting to api/server.js
 import React from 'react';
-import { CenterContainer } from "../styles/centeredContainer";
+import { CenterContainer } from '../styles/centeredContainer';
 import { Title } from '../styles/title';
 import { useFetch } from '../utils/hooks';
 import { NextLine } from '../styles/nextLine';
@@ -9,7 +9,7 @@ import { NextLine } from '../styles/nextLine';
 function List() {
 
   const [data] = useFetch(
-    "http://localhost:8000/api/getList"
+    'http://localhost:8000/api/getList'
   );
 
   // console.log("from List.js - data: " +data)
