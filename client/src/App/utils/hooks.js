@@ -2,7 +2,7 @@
 // https://medium.com/@cwlsn/how-to-fetch-data-with-react-hooks-in-a-minute-e0f9a15a44d6
 import { useState, useEffect } from 'react';
 
-function useFetch(url){
+function useFetch(url) {
 
   // creating hook for state management in functional componenet
   const [data, setData] = useState([]);

@@ -1,6 +1,7 @@
 const webpack = require("webpack");
 const HtmlWebpackPlugin = require("html-webpack-plugin"); 
 const path = require("path");
+const dotenv = require('dotenv').config()
 
 const port = process.env.PORT || 8080;
 
@@ -9,6 +10,9 @@ module.exports = {
   entry: './src/index.js',
   devtool: 'inline-source-map',
   plugins: [
+    new webpack.DefinePlugin({
+      "process.env": JSON.stringify(dotenv.parsed)
+    }),
     new HtmlWebpackPlugin({
       template: path.resolve(__dirname, "src", "index.html")
     }),

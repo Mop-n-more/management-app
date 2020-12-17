@@ -9,10 +9,8 @@ import { NextLine } from '../styles/nextLine';
 function List() {
 
   const [data] = useFetch(
-    'http://localhost:8000/api/getList'
+    process.env.API_GETLIST_URL
   );
-
-  // console.log("from List.js - data: " +data)
 
   return(
     <CenterContainer>
@@ -24,7 +22,6 @@ function List() {
               {item}
             </NextLine>
           )
-            {/* {console.log("from list.js - data: " + data)} */}
         })}
 
       </div>
