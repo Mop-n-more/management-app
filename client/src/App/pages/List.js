@@ -1,51 +1,32 @@
-import React, { Component } from "react";
-import { CenterContainer } from "../styles/centeredContainer";
-import {Title} from '../styles/title';
+// List.js will only be used for testing purposes
+// for connecting to api/server.js
+import React from 'react';
+import { CenterContainer } from '../styles/centeredContainer';
+import { Title } from '../styles/title';
+import { useFetch } from '../utils/hooks';
+import { NextLine } from '../styles/nextLine';
 
-class List extends Component {
-  // initialize the state
-  constructor(props){
-    super(props);
-    this.state = {
-      list: []
-    }
-  }
-  
-  // Fetch the list 
-  componentDidMount() {
-    fetch('http://localhost:8000/api/getList')
-    .then((res) => res.json())
-    .then(list => this.setState({ list }));
-  }
+function List() {
 
+  const [data] = useFetch(
+    process.env.API_GETLIST_URL
+  );
 
-  render() {
-    const { list } = this.state;
+  return(
+    <CenterContainer>
+      <div>
+      <Title>List from server{"\n"}</Title>
+        {data.map((item) => {
+          return (
+            <NextLine>
+              {item}
+            </NextLine>
+          )
+        })}
 
-    return(
-      <div className="App">
-        <Title>List of Items</Title>
-        {/** Check to see if any items are found */}
-        {list.length ? (
-          <CenterContainer>
-            {/** Render the list of items */}
-            {list.map((item) => {
-              return(
-                <div>
-                  {item}
-                </div>
-              );
-            })}
-          </CenterContainer>
-        ) : (
-          <CenterContainer>
-            <h2>No List Items Found</h2>
-          </CenterContainer>
-        )
-      }
       </div>
-    );
-  }
+    </CenterContainer>
+  );
 }
 
 export default List;

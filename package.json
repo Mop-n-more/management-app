@@ -3,10 +3,11 @@
   "version": "1.0.0",
   "description": "",
   "main": "main.js",
-  "proxy": "http://localhost:8000",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "concurrently \"cd client && npm start\" \"cd api && npm start\""
+    "start": "concurrently \"cd client && npm start\" \"cd api && npm start\"",
+    "build": "concurrently \"cd client && npm i\" \"cd api && npm i\"",
+    "electron-start": "electron ."
   },
   "repository": {
     "type": "git",
@@ -19,6 +20,7 @@
   },
   "homepage": "https://github.com/Mop-n-more/management-app#readme",
   "devDependencies": {
-    "concurrently": "^5.3.0"
+    "concurrently": "^5.3.0",
+    "electron": "^11.1.0"
   }
 }
