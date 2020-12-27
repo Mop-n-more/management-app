@@ -1,8 +1,11 @@
 const express = require('express');
-const mysqlConnection = require('./database/database');
+const { mysqlConnection } = require('./database/database');
+const testRoutes = require('./database/queries/test');
 require('dotenv').config();
 
 const app = express();
+
+app.use(testRoutes);
 
 // middleware for allowing react to fetch() from server
 app.use(function(req, res, next) {
