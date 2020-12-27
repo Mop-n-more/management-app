@@ -34,10 +34,17 @@ Then `npm start` and a web browser should open with localhost:8080.
 
 ## ⛏️ Built Using <a name = "built_using"></a>
 
-- [MySQL](https://www.mysql.com/) - Database
-- [Express](https://expressjs.com/) - Server Framework
-- [NodeJs](https://nodejs.org/en/) - Server Environment
-- [ReactJS](https://reactjs.org/) - Web Framework
+### Database
+- [MySQL 8](https://www.mysql.com/)
+
+### Server Framework
+- [Express](https://expressjs.com/) 
+
+### Server Environment 
+- [NodeJs](https://nodejs.org/en/) 
+
+### Web Framework
+- [ReactJS](https://reactjs.org/) 
 
 ## ✍️ Authors <a name = "authors"></a>
 
