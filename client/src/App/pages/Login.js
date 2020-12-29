@@ -1,3 +1,5 @@
+// used ⬇️ for understanding form handling with react hooks
+// https://rangle.io/blog/simplifying-controlled-inputs-with-hooks/
 import React, { useEffect, useState }from 'react';
 import { CenteredContainer } from '../styles/centeredContainer';
 import { NextLine } from '../styles/nextLine';
@@ -21,31 +23,31 @@ function Login() {
            
         <Form onSubmit={handleSubmit}>
           <NextLine>
-          <Form.Group controlId='formBasicEmail'>
+            <Form.Group controlId='formBasicEmail'>
 
-            <Form.Label>Email address</Form.Label>
-            <Form.Control 
-              type='email' 
-              placeholder='Enter email'
-              onChange={e => setEmail(e.target.value)}
-            />
-            <Form.Text className='text-muted'>
-              We'll never share your email with anyone else.
-            </Form.Text>
-          </Form.Group>
+              <Form.Label>Email address</Form.Label>
+              <Form.Control 
+                type='email' 
+                placeholder='Enter email'
+                onChange={e => setEmail(e.target.value)}
+              />
+              <Form.Text className='text-muted'>
+                We'll never share your email with anyone else.
+              </Form.Text>
+            </Form.Group>
 
-          <Form.Group controlId='formBasicPassword'>
-            <Form.Label>Password</Form.Label>
-            <Form.Control 
-              type='password' 
-              placeholder='Password' 
-              onChange={e => setPassword(e.target.value)}
-            />
-          </Form.Group>
+            <Form.Group controlId='formBasicPassword'>
+              <Form.Label>Password</Form.Label>
+              <Form.Control 
+                type='password' 
+                placeholder='Password' 
+                onChange={e => setPassword(e.target.value)}
+              />
+            </Form.Group>
 
-          <Button  variant='primary' type='submit'>
-            Submit
-          </Button>
+            <Button  variant='primary' type='submit'>
+              Submit
+            </Button>
 
           </NextLine>
 
