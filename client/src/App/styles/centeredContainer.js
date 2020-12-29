@@ -1,9 +1,9 @@
 import styled from 'styled-components';
 
-export const CenterContainer = styled.div`
-  display: flex;
-  max-width: 1200px;
-  justify-content: space-around;
+export const CenteredContainer = styled.div`
+  flex-wrap: wrap;
+  max-width: 30rem;
+  justify-content: center;
   margin: 40px auto;
   align-items: center;
 `

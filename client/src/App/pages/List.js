@@ -1,7 +1,7 @@
 // List.js will only be used for testing purposes
 // for connecting to api/server.js
 import React from 'react';
-import { CenterContainer } from '../styles/centeredContainer';
+import { CenteredContainer } from '../styles/centeredContainer';
 import { Title } from '../styles/title';
 import { useFetch } from '../utils/hooks';
 import { NextLine } from '../styles/nextLine';
@@ -13,7 +13,7 @@ function List() {
   );
 
   return(
-    <CenterContainer>
+    <CenteredContainer>
       <div>
       <Title>List from server{"\n"}</Title>
         {data.map((item) => {
@@ -25,7 +25,7 @@ function List() {
         })}
 
       </div>
-    </CenterContainer>
+    </CenteredContainer>
   );
 }
 
