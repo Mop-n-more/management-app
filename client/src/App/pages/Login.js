@@ -15,7 +15,7 @@ function Login() {
   const handleSubmit = e => {
     e.preventDefault();
     console.log(email, password);
-    fetch('http://localhost:8000/login', {
+    fetch(process.env.API_SENDLOGIN_URL, {
       method: 'POST',
       headers:{
         'Accept': 'application/json',
