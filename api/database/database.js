@@ -14,8 +14,6 @@ mysqlConnection.getConnection( err => {
     console.error('error connecting: ', err.stack);
     return;
   }
-
-  console.log('connected as id ', mysqlConnection.threadId);
 })
 
 mysqlConnection.getConnection(err => {

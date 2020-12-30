@@ -27,6 +27,7 @@ app.post('/login', (req, res) => {
   const {email, password} = req.body;
   console.log(req.body);
   console.log(email, password);
+  res.send(req.body)
 })
 
 // An api endpoint that returns a short list of items
