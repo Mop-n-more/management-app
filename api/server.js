@@ -1,17 +1,17 @@
 const express = require('express');
-const { mysqlConnection } = require('./database/database');
-const testRoutes = require('./database/queries/test');
+// const testRoutes = require('./database/queries/test');
 require('dotenv').config();
 
 const app = express();
 
-app.use(testRoutes);
-
+// app.use(testRoutes);
+app.use(express.json());
+app.use(express.urlencoded({extended: true}));
 // middleware for allowing react to fetch() from server
 app.use(function(req, res, next) {
   res.header('Access-Control-Allow-Origin', '*');
   res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, Authorization');
-  res.header('Access-Control-Allow-Methods', 'PUT, POST, GET, DELETE, OPTIONS');
+  res.header('Access-Control-Allow-Methods', 'PUT, POST, GET, OPTIONS');
   next();
 });
 
@@ -21,6 +21,12 @@ app.get('/', (req, res) => {
 
 app.get('/testAPI', (req, res) => {
   res.send('api working correctly, status code: ' + res.statusCode);
+})
+
+app.post('/login', (req, res) => {
+  const {email, password} = req.body;
+  console.log(req.body);
+  console.log(email, password);
 })
 
 // An api endpoint that returns a short list of items

@@ -15,15 +15,30 @@ function Login() {
   const handleSubmit = e => {
     e.preventDefault();
     console.log(email, password);
+    fetch('http://localhost:8000/login', {
+      method: 'POST',
+      headers:{
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        email: email, 
+        password: password
+      })
+    })
+    .then((res) => res.json())
+    .catch((err) => console.error(err))
   }
 
   return (
     <CenteredContainer>
       <Title>
-        Welcome
+        Welcome!
       </Title>
            
-        <Form onSubmit={handleSubmit}>
+        <Form 
+          onSubmit={handleSubmit}
+        >
           <NextLine>
             <Form.Group controlId='formBasicEmail'>
 
@@ -57,7 +72,7 @@ function Login() {
 
             <NextLine>
               <Button  variant='primary' type='submit'>
-                Submit
+                Log in
               </Button>
             </NextLine>
           </NextLine>
