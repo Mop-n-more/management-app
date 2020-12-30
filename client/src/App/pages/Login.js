@@ -6,7 +6,6 @@ import { NextLine } from '../styles/nextLine';
 import { Title } from '../styles/title';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
-import Nav from 'react-bootstrap/Nav';
 
 function Login() {
 
@@ -20,17 +19,13 @@ function Login() {
 
   return (
     <CenteredContainer>
-      <Title>
-        Welcome
-      </Title>
+      <Title>Welcome</Title>
            
         <Form onSubmit={handleSubmit}>
           <NextLine>
-            
             <Form.Group controlId='formBasicEmail'>
-              <Form.Label>
-                Email address
-              </Form.Label>
+
+              <Form.Label>Email address</Form.Label>
               <Form.Control 
                 type='email' 
                 placeholder='Enter email'
@@ -42,27 +37,20 @@ function Login() {
             </Form.Group>
 
             <Form.Group controlId='formBasicPassword'>
-              <Form.Label>
-                Password
-              </Form.Label>
+              <Form.Label>Password</Form.Label>
               <Form.Control 
                 type='password' 
                 placeholder='Password' 
                 onChange={e => setPassword(e.target.value)}
               />
             </Form.Group>
-    
-              <Button href='#' variant='link'>
-                Forgot password?
-              </Button>
 
-            <NextLine>
-              <Button variant='primary' type='submit'>
-                Submit
-              </Button>
-            </NextLine>
-            
+            <Button  variant='primary' type='submit'>
+              Submit
+            </Button>
+
           </NextLine>
+
         </Form>
     </CenteredContainer>
   );
