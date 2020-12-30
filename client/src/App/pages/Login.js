@@ -19,13 +19,17 @@ function Login() {
 
   return (
     <CenteredContainer>
-      <Title>Welcome</Title>
+      <Title>
+        Welcome
+      </Title>
            
         <Form onSubmit={handleSubmit}>
           <NextLine>
             <Form.Group controlId='formBasicEmail'>
 
-              <Form.Label>Email address</Form.Label>
+              <Form.Label>
+                Email address
+              </Form.Label>
               <Form.Control 
                 type='email' 
                 placeholder='Enter email'
@@ -37,7 +41,9 @@ function Login() {
             </Form.Group>
 
             <Form.Group controlId='formBasicPassword'>
-              <Form.Label>Password</Form.Label>
+              <Form.Label>
+                Password
+              </Form.Label>
               <Form.Control 
                 type='password' 
                 placeholder='Password' 
@@ -45,10 +51,15 @@ function Login() {
               />
             </Form.Group>
 
-            <Button  variant='primary' type='submit'>
-              Submit
+            <Button variant='link' href='#'>
+              Forgot password?
             </Button>
 
+            <NextLine>
+              <Button  variant='primary' type='submit'>
+                Submit
+              </Button>
+            </NextLine>
           </NextLine>
 
         </Form>
