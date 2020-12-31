@@ -1,28 +1,29 @@
-// used ⬇️ for understanding form handling with react hooks
-// https://rangle.io/blog/simplifying-controlled-inputs-with-hooks/
 import React, { useEffect, useState }from 'react';
 import { CenteredContainer } from '../styles/centeredContainer';
 import { NextLine } from '../styles/nextLine';
 import { Title } from '../styles/title';
-import { Link } from 'react-router-dom';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 
-function Login() {
+function SignUp() {
 
+  const [firstName, setFirstName] = useState('');
+  const [lastName, setLastName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] =useState('');
 
   const handleSubmit = e => {
     e.preventDefault();
-    console.log(email, password);
-    fetch(process.env.API_SENDLOGIN_URL, {
+    console.log(firstName, lastName, email, password);
+    fetch(process.env.API_SIGNUP_URL, {
       method: 'POST',
       headers:{
         'Accept': 'application/json',
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({
+        firstName: firstName,
+        lastName: lastName,
         email: email, 
         password: password
       })
@@ -34,15 +35,36 @@ function Login() {
   return (
     <CenteredContainer>
       <Title>
-        Welcome!
+        Sign up here!
       </Title>
            
         <Form 
           onSubmit={handleSubmit}
         >
           <NextLine>
-            <Form.Group controlId='formBasicEmail'>
 
+            <Form.Group controlId='firstName'>
+              <Form.Label>
+                First Name
+              </Form.Label>
+              <Form.Control
+                type='firstName'
+                placeholder='Enter First Name'
+                onChange={e => setFirstName(e.target.value)}
+              />
+            </Form.Group>
+            <Form.Group controlId='lastName'>
+              <Form.Label>
+                Last Name
+              </Form.Label>
+              <Form.Control
+                type='lastName'
+                placeholder='Enter Last Name'
+                onChange={e => setLastName(e.target.value)}
+              />
+            </Form.Group>
+
+            <Form.Group controlId='formBasicEmail'>
               <Form.Label>
                 Email address
               </Form.Label>
@@ -51,6 +73,9 @@ function Login() {
                 placeholder='Enter email'
                 onChange={e => setEmail(e.target.value)}
               />
+              <Form.Text className='text-muted'>
+                We'll never share your email with anyone else.
+              </Form.Text>
             </Form.Group>
 
             <Form.Group controlId='formBasicPassword'>
@@ -64,19 +89,10 @@ function Login() {
               />
             </Form.Group>
 
-            <Button variant='link'>
-              Forgot password?
-            </Button>
-            
-            <Link to={'./signup'}>
-              <Button variant='link'>
-                No login? Sign up here!
-              </Button>
-            </Link>
 
             <NextLine>
               <Button  variant='primary' type='submit'>
-                Log in
+                Sign Up
               </Button>
             </NextLine>
           </NextLine>
@@ -86,4 +102,4 @@ function Login() {
   );
 }
 
-export default Login;
+export default SignUp;

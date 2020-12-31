@@ -30,6 +30,11 @@ app.post('/login', (req, res) => {
   res.send(req.body)
 })
 
+app.post('/signup', (req, res) => {
+  console.log(req.body);
+  res.send(req.body)
+})
+
 // An api endpoint that returns a short list of items
 app.get('/api/getList', (req, res) => {
   const list = ['item1', 'item2', 'item3'];
