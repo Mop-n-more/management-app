@@ -13,21 +13,25 @@ function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] =useState('');
 
+  const options = {
+    method: 'POST',
+    headers:{
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      email: email, 
+      password: password
+    })
+  }
+
   const handleSubmit = e => {
     e.preventDefault();
     console.log(email, password);
-    fetch(process.env.API_SENDLOGIN_URL, {
-      method: 'POST',
-      headers:{
-        'Accept': 'application/json',
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-        email: email, 
-        password: password
-      })
+    fetch(process.env.API_SENDLOGIN_URL, options)
+    .then((res) => {
+      res.json();
     })
-    .then((res) => res.json())
     .catch((err) => console.error(err))
   }
 
