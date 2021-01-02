@@ -25,13 +25,16 @@ function Login() {
     })
   }
 
-  const handleSubmit = e => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     console.log(email, password);
-    fetch(process.env.API_SENDLOGIN_URL, options)
-    .then((res) => {
-      res.json();
+    await fetch(process.env.API_SENDLOGIN_URL, options)
+    .then((response) => {
+      if (response.status >= 400 && response.status < 600) {
+        throw new Error("Bad response from server")
+      }
     })
+    .then((returnedResponse) => returnedResponse.json())
     .catch((err) => console.error(err))
   }
 
