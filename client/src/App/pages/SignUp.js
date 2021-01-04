@@ -4,6 +4,7 @@ import { NextLine } from '../styles/nextLine';
 import { Title } from '../styles/title';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
+import { Link } from 'react-router-dom/cjs/react-router-dom.min';
 
 function SignUp() {
 
@@ -12,23 +13,30 @@ function SignUp() {
   const [email, setEmail] = useState('');
   const [password, setPassword] =useState('');
 
-  const handleSubmit = e => {
+  const options = {
+    method: 'POST',
+    headers:{
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      firstName: firstName,
+      lastName: lastName,
+      email: email, 
+      password: password
+    })
+  }
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
     console.log(firstName, lastName, email, password);
-    fetch(process.env.API_SIGNUP_URL, {
-      method: 'POST',
-      headers:{
-        'Accept': 'application/json',
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-        firstName: firstName,
-        lastName: lastName,
-        email: email, 
-        password: password
-      })
+    await fetch(process.env.API_SIGNUP_URL, options)
+    .then((response) => {
+      if (response.status >= 400 && response.status < 600) {
+        throw new Error("Bad response from server")
+      }
     })
-    .then((res) => res.json())
+    .then((returnedResponse) => returnedResponse.json())
     .catch((err) => console.error(err))
   }
 
@@ -89,11 +97,15 @@ function SignUp() {
               />
             </Form.Group>
 
-
             <NextLine>
               <Button  variant='primary' type='submit'>
                 Sign Up
               </Button>
+              <Link to={'/login'}>
+                <Button variant='link'>
+                  Cancel
+                </Button>
+              </Link>
             </NextLine>
           </NextLine>
 
