@@ -32,7 +32,7 @@ app.post('/login', (req, res) => {
 
 app.post('/signup', (req, res) => {
   console.log(req.body);
-  res.send(req.body)
+  res.send(req.body); 
 })
 
 // An api endpoint that returns a short list of items

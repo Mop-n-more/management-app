@@ -4,7 +4,7 @@ import { NextLine } from '../styles/nextLine';
 import { Title } from '../styles/title';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
-import { Link } from 'react-router-dom/cjs/react-router-dom.min';
+import { Link, useHistory } from 'react-router-dom';
 
 export default function SignUp() {
 
@@ -12,6 +12,8 @@ export default function SignUp() {
   const [lastName, setLastName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] =useState('');
+
+  const history = useHistory();
 
   const options = {
     method: 'POST',
@@ -29,14 +31,15 @@ export default function SignUp() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(firstName, lastName, email, password);
     await fetch(process.env.API_SIGNUP_URL, options)
     .then((response) => {
       if (response.status >= 400 && response.status < 600) {
         throw new Error("Bad response from server")
       }
     })
-    .then((returnedResponse) => returnedResponse.json())
+    .then(() => {
+      history.push('./success');
+    })
     .catch((err) => console.error(err))
   }
 
