@@ -6,7 +6,7 @@ import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import { Link } from 'react-router-dom/cjs/react-router-dom.min';
 
-function SignUp() {
+export default function SignUp() {
 
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
@@ -113,5 +113,3 @@ function SignUp() {
     </CenteredContainer>
   );
 }
-
-export default SignUp;

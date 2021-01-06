@@ -4,21 +4,19 @@ import { Button } from '../styles/button';
 import { Title } from '../styles/title';
 import { CenteredContainer } from '../styles/centeredContainer';
 
-function Success() {
+export default function Success() {
   return (
     <CenteredContainer>
-    <div className='App'>
-      <Title>Success!</Title>
-        {/** Link to List.js */} 
-            <Link to={'./login'}>
+      <div className='App'>
+        <Title>Success!</Title>
+          {/** Link to List.js */} 
+            <Link to={'./home'}>
               <Button variant='raised'>
-                Back to login
+                Click to go to home page
               </Button>
             </Link>
-    </div>
+      </div>
 
     </CenteredContainer>
   );
 }
-
-export default Success;

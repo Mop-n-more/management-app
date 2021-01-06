@@ -1,17 +1,19 @@
 // used ⬇️ for understanding form handling with react hooks
 // https://rangle.io/blog/simplifying-controlled-inputs-with-hooks/
-import React, { useEffect, useState }from 'react';
+import React, { useState }from 'react';
 import { CenteredContainer } from '../styles/centeredContainer';
 import { NextLine } from '../styles/nextLine';
 import { Title } from '../styles/title';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 
-function Login() {
+export default function Login(props) {
 
   const [email, setEmail] = useState('');
   const [password, setPassword] =useState('');
+
+  const history = useHistory();
 
   const options = {
     method: 'POST',
@@ -27,14 +29,16 @@ function Login() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(email, password);
+    // console.log(email, password);
     await fetch(process.env.API_SENDLOGIN_URL, options)
     .then((response) => {
       if (response.status >= 400 && response.status < 600) {
         throw new Error("Bad response from server")
       }
     })
-    .then((returnedResponse) => returnedResponse.json())
+    .then(() => {
+      history.push('/success')
+    })
     .catch((err) => console.error(err))
   }
 
@@ -93,4 +97,3 @@ function Login() {
   );
 }
 
-export default Login;
