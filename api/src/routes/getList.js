@@ -1,7 +1,6 @@
 import express from 'express';
 const router = express.Router();
 
-
 // An api endpoint that returns a short list of items
 router.get('/api/getList', (req, res) => {
   const list = ['item1', 'item2', 'item3'];

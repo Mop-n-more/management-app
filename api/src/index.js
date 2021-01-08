@@ -3,7 +3,7 @@ import cors from 'cors';
 import testAPI from './routes/testAPI';
 import userRoutes from './routes/userRoutes';
 import getList from './routes/getList';
-// const testRoutes = require('./database/queries/test');
+import getUsers from '../database/queries/getUsers';
 
 const app = express();
 
@@ -11,15 +11,15 @@ const app = express();
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
 app.use(cors());
-app.use(testAPI);
 app.use(userRoutes);
+app.use(getUsers);
+
+// these are both used for client to server testing purposes 
 app.use(getList);
+app.use(testAPI);
 
 app.get('/', (req, res) => {
   res.send('Hello world');
 })
-
-
-
 
 export default app;
