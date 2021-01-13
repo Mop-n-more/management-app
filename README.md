@@ -48,6 +48,6 @@ Then `npm start` and a web browser should open with localhost:8080.
 
 ## ✍️ Authors <a name = "authors"></a>
 
-- [@jontkoh](https://github.com/jontkoh) - Backend Development 
-- [@philipbaledia](https://github.com/philipbaledia) - Frontend Development 
-- [@dchan0319](https://github.com/DChan0319) - Full Stack Development
+- [@jontkoh](https://github.com/jontkoh)
+- [@philipbaledia](https://github.com/philipbaledia)
+- [@dchan0319](https://github.com/DChan0319)t
