@@ -1,7 +1,7 @@
 import app from './src';
 import 'dotenv/config';
 
-try{
+try {
   app.listen(process.env.PORT, () => {
     console.log(`listening on port ${process.env.PORT}`);
   })

@@ -1,12 +1,12 @@
 import mysql from 'mysql';
 import 'dotenv/config';
 
-const mysqlConnection = mysql.createPool({
-  connectionLimit: 10,
+const pool = mysql.createPool({
+  connectionLimit : 10,
   host : process.env.MYSQL_HOST,
   user : process.env.MYSQL_USER,
   password : process.env.MYSQL_PASSWORD,
-  database: process.env.MYSQL_DB
+  database : process.env.MYSQL_DB
 });
 
-export default mysqlConnection;
+export default pool;

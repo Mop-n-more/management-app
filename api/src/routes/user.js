@@ -1,15 +1,30 @@
 import express from 'express';
-import mysqlConnection from '../createDatabase';
+import mysqlConnection from '../../database/createConnection'
 
 const router = express.Router();
 
-router.get("/getUsers", async (req, res) => {
+// prefix : /api/v1
+
+router.post('/login', (req, res) => {
+  const {email, password} = req.body;
+  console.log(req.body);
+  console.log(email, password);
+  res.send(req.body)
+})
+
+router.post('/signup', (req, res) => {
+  console.log(req.body);
+
+  res.send(req.body); 
+})
+
+router.get("/users", async (req, res) => {
   try {
     await mysqlConnection.getConnection( async (err, connection) => {
       if (err) {
         throw err;
       }
-      await mysqlConnection.query(
+      await connection.query(
         'SELECT * FROM user', (err, results, fields) => {
           if (err) {
             console.error(err);
@@ -23,6 +38,7 @@ router.get("/getUsers", async (req, res) => {
     })
   } catch (error) {
     console.error(error);
+    res.status(500).send("Internal Service Error!");
   }
 });
 
