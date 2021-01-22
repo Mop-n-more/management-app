@@ -50,4 +50,5 @@ Then `npm start` and a web browser should open with localhost:8080.
 
 - [@jontkoh](https://github.com/jontkoh)
 - [@philipbaledia](https://github.com/philipbaledia)
-- [@dchan0319](https://github.com/DChan0319)t
+- [@dchan0319](https://github.com/DChan0319)
+- [@chriskoh](https://github.com/chriskoh)
