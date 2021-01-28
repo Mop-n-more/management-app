@@ -2,7 +2,6 @@ import express from 'express';
 import cors from 'cors';
 import testAPI from './routes/testAPI';
 import userRoutes from './routes/user';
-import '../database/createTables';
 
 const app = express();
 
