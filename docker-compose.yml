@@ -1,0 +1,53 @@
+version: "3.9"
+services: 
+  backend:
+    image: node:latest
+    volumes: 
+      - ./api:/usr/src/app/api
+    working_dir: /usr/src/app/api
+    command: npm start
+    ports:
+      - "8080:8080"
+    environment:
+      - NODE_ENV=development
+    networks: 
+      - backend
+      - frontend
+      
+  mysql: 
+    image: mysql:5.7
+    command: --skip-grant-tables
+    command: --init-file /data/application/initDBandTables.sql
+    volumes: 
+      - ./api/database/tables/initDBandTables.sql:/data/application/initDBandTables.sql
+    ports: 
+      - "3307:3306"
+    restart: always
+    environment: 
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+      MYSQL_HOST: ${MYSQL_HOST}
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_DB: ${MYSQL_DB} 
+    networks: 
+      - backend
+    container_name: mopnmoreDB
+
+  frontend:
+    build: ./client
+    volumes:
+      - ./client:/usr/src/app/client
+    working_dir: /usr/src/app/client
+    command: npm start
+    ports:
+      - "3000:3000"
+    tty: true
+    networks:
+      - frontend
+
+volumes:
+    nodemodules:
+
+networks: 
+  backend:
+  frontend:
